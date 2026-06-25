@@ -1,4 +1,9 @@
 # Firebase local config - NOTE: Firebase client keys are public by design.
 # Security is enforced by Firestore Rules, not by keeping this file secret.
-# .firebase cache
+
+# Firebase CLI local cache (do not commit)
 .firebase/
+.firebaseignore
+
+# Node.js
+node_modules/
