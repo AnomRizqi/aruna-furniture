@@ -255,7 +255,8 @@ const initAuth = () => {
 
   // Resolve Google Redirect result on page load (required for Vercel/production environment)
   const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  if (!isLocalhost && sessionStorage.getItem('pendingGoogleRedirect') === 'true') {
+  const isFirebaseHost = window.location.hostname.endsWith('.firebaseapp.com') || window.location.hostname.endsWith('.web.app');
+  if (!isLocalhost && !isFirebaseHost && sessionStorage.getItem('pendingGoogleRedirect') === 'true') {
     getRedirectResult(auth)
       .then((result) => {
         sessionStorage.removeItem('pendingGoogleRedirect');
@@ -304,12 +305,13 @@ const initAuth = () => {
     });
   });
 
-  // Action 1: Google Login (User) - Hybrid Popup (localhost) & Redirect (production/Vercel)
+  // Action 1: Google Login (User) - Hybrid Popup (localhost/Firebase) & Redirect (production/Vercel)
   if (googleLoginBtn) {
     googleLoginBtn.addEventListener('click', async () => {
       const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const isFirebaseHost = window.location.hostname.endsWith('.firebaseapp.com') || window.location.hostname.endsWith('.web.app');
       try {
-        if (isLocalhost) {
+        if (isLocalhost || isFirebaseHost) {
           const result = await signInWithPopup(auth, googleProvider);
           const user = result.user;
           alert(`Selamat Datang, ${user.displayName || user.email}!`);

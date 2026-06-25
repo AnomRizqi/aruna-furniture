@@ -32,8 +32,10 @@ const response = await fetch('/firebase-config.json');
 const firebaseConfig = await response.json();
 
 // Use current host as authDomain in production (Vercel) to bypass Chrome/Safari third-party cookie blocks
+// Keep default authDomain if we are on a Firebase hosting domain (ends with .firebaseapp.com or .web.app)
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-if (!isLocalhost) {
+const isFirebaseHost = window.location.hostname.endsWith('.firebaseapp.com') || window.location.hostname.endsWith('.web.app');
+if (!isLocalhost && !isFirebaseHost) {
   firebaseConfig.authDomain = window.location.host;
 }
 
