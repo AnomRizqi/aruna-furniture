@@ -253,16 +253,14 @@ const initAuth = () => {
   const googleLoginBtn = document.getElementById('googleLoginBtn');
   const adminLoginForm = document.getElementById('adminLoginForm');
 
-  // Resolve Google Redirect result on page load (required for Vercel/production environment)
+  // Resolve Google Redirect result on page load (required for all production environments)
   const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const isFirebaseHost = window.location.hostname.endsWith('.firebaseapp.com') || window.location.hostname.endsWith('.web.app');
-  if (!isLocalhost && !isFirebaseHost && sessionStorage.getItem('pendingGoogleRedirect') === 'true') {
+  if (!isLocalhost && sessionStorage.getItem('pendingGoogleRedirect') === 'true') {
     getRedirectResult(auth)
       .then((result) => {
         sessionStorage.removeItem('pendingGoogleRedirect');
         if (result && result.user) {
           console.log("Redirect login successful for: ", result.user.email);
-          alert(`Selamat Datang, ${result.user.displayName || result.user.email}!`);
         }
       })
       .catch((err) => {
@@ -305,19 +303,20 @@ const initAuth = () => {
     });
   });
 
-  // Action 1: Google Login (User) - Hybrid Popup (localhost/Firebase) & Redirect (production/Vercel)
+  // Action 1: Google Login (User)
+  // Popup is only used on localhost. On ALL HTTPS domains (Firebase, Vercel, etc.)
+  // we use signInWithRedirect - more robust, bypasses popup blocking & cookie issues.
   if (googleLoginBtn) {
     googleLoginBtn.addEventListener('click', async () => {
       const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      const isFirebaseHost = window.location.hostname.endsWith('.firebaseapp.com') || window.location.hostname.endsWith('.web.app');
       try {
-        if (isLocalhost || isFirebaseHost) {
+        if (isLocalhost) {
           const result = await signInWithPopup(auth, googleProvider);
           const user = result.user;
           alert(`Selamat Datang, ${user.displayName || user.email}!`);
           closeModal();
         } else {
-          // Use redirect on production HTTPS (Vercel) to bypass Chrome's third-party cookie popup block
+          // Use redirect on ALL production HTTPS domains
           sessionStorage.setItem('pendingGoogleRedirect', 'true');
           await signInWithRedirect(auth, googleProvider);
         }
