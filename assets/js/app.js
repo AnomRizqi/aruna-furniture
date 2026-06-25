@@ -23,7 +23,7 @@ import {
   limit,
   onSnapshot,
   serverTimestamp
-} from './firebase-config.js?v=13';
+} from './firebase-config.js?v=14';
 
 // Global variables
 let productsData = [];
