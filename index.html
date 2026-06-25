@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aruna Furniture | Premium Scandinavian & Modern Interior</title>
+  
+  <!-- Meta Tags for SEO -->
+  <meta name="description" content="Aruna Furniture memproduksi furniture kayu handmade berkualitas tinggi dengan desain minimalis Scandinavian modern oleh pengrajin lokal terbaik Indonesia.">
+  <meta name="keywords" content="furniture, mebel jepara, scandinavian furniture, interior minimalist, kustom mebel, kayu jati, aruna furniture">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css?v=11">
+  <link rel="stylesheet" href="assets/css/admin.css?v=11">
+  
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  
+  <!-- Lucide Icons (Universal modern vector icons) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- File Protocol Warning (Prevent CORS blocks when opening file:// directly) -->
+  <script>
+    if (window.location.protocol === 'file:') {
+      document.addEventListener('DOMContentLoaded', function() {
+        var warningDiv = document.createElement('div');
+        warningDiv.style.position = 'fixed';
+        warningDiv.style.top = '0';
+        warningDiv.style.left = '0';
+        warningDiv.style.width = '100%';
+        warningDiv.style.height = '100%';
+        warningDiv.style.backgroundColor = 'rgba(31, 31, 31, 0.98)';
+        warningDiv.style.color = '#F8F6F3';
+        warningDiv.style.zIndex = '999999';
+        warningDiv.style.display = 'flex';
+        warningDiv.style.flexDirection = 'column';
+        warningDiv.style.justifyContent = 'center';
+        warningDiv.style.alignItems = 'center';
+        warningDiv.style.fontFamily = "'Poppins', sans-serif";
+        warningDiv.style.padding = '20px';
+        warningDiv.style.textAlign = 'center';
+
+        warningDiv.innerHTML = `
+          <div style="max-width: 500px; background: #FFFFFF; color: #1F1F1F; padding: 40px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-top: 5px solid #A67C52;">
+            <svg style="color: #A67C52; margin-bottom: 20px; display: inline-block;" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <h2 style="margin-top: 0; margin-bottom: 16px; font-weight: 600; color: #1F1F1F;">Protokol File:// Diblokir Browser</h2>
+            <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.6; color: #555555; margin-bottom: 24px; text-align: center;">
+              Browser modern memblokir ES Modules (Firebase & App Logic) jika dijalankan langsung dari file lokal (file://). Silakan buka melalui server lokal yang sudah berjalan.
+            </p>
+            <div style="background: #F8F6F3; padding: 16px; border-radius: 8px; font-family: monospace; font-size: 1.1rem; margin-bottom: 24px; color: #A67C52; font-weight: bold; border: 1px dashed #A67C52; letter-spacing: 0.5px;">
+              http://localhost:8080
+            </div>
+            <a href="http://localhost:8080" style="display: inline-block; background: #A67C52; color: #FFFFFF; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(166, 124, 82, 0.3); transition: background 0.3s;">
+              Buka Server Lokal
+            </a>
+          </div>
+        `;
+        document.body.appendChild(warningDiv);
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader-logo">ARUNA<span>.</span></div>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       1. CLIENT SIDE VIEW WRAPPER
+       ======================================================== -->
+  <div id="clientView">
+    
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <a href="#home" class="logo">
+          <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10M12 6V2M9 22h6M2 22h20"/></svg>
+          <span class="logo-text" id="logoText">ARUNA<span>.</span></span>
+        </a>
+        
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#products" class="nav-link">Products</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#reviews" class="nav-link">Reviews</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        
+        <div class="nav-auth" id="navAuth">
+          <!-- Replaced by user avatar dropdown or Login button dynamically -->
+          <button class="btn-login" id="loginBtn">
+            <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+            Login
+          </button>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+        <span class="hero-tagline">Premium Furniture & Interior</span>
+        <h1 class="hero-title">Crafted From Nature,<br>Built For Every Home.</h1>
+        <p class="hero-subtitle">Furniture kayu handmade berkualitas tinggi dengan desain minimalis modern yang dibuat oleh pengrajin lokal Indonesia.</p>
+        <div class="hero-buttons">
+          <a href="#products" class="btn btn-primary">
+            Explore Collection
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#contact" class="btn btn-secondary">Contact Us</a>
+        </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <a href="#about" class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-indicator-mouse">
+          <div class="scroll-indicator-wheel"></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-wrapper" data-aos="fade-right" data-aos-duration="1000">
+            <img src="assets/images/banners/about-workshop.jpg" alt="Workshop Aruna Furniture">
+          </div>
+          
+          <div class="about-text-content" data-aos="fade-left" data-aos-duration="1000">
+            <span class="about-text-tag">Tentang Kami</span>
+            <h2 class="about-title">Keindahan Alami Kayu Terbaik dalam Setiap Ruangan</h2>
+            <p class="about-description">
+              Aruna Furniture adalah produsen furniture lokal berkualitas ekspor asal Jepara. Bermula dari mimpi sederhana untuk melestarikan nilai kerajinan kayu tradisional Indonesia, kami menghadirkan produk furnitur dengan konsep minimalis modern Scandinavian yang ramah lingkungan dan tahan lama.
+            </p>
+            
+            <div class="vision-mission">
+              <div class="vm-card">
+                <svg class="vm-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                <h3 class="vm-title">Visi</h3>
+                <p class="vm-text">Menjadi pionir furniture lokal premium dengan konsep modern eco-living di kancah global.</p>
+              </div>
+              <div class="vm-card">
+                <svg class="vm-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <h3 class="vm-title">Misi</h3>
+                <p class="vm-text">Menghadirkan kenyamanan dengan desain eksklusif, material bersertifikat, dan ketahanan jangka panjang.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Stats Counter Grid -->
+        <div class="stats-grid" data-aos="fade-up" data-aos-duration="1000">
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Customer Puas</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Project Selesai</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Tahun Pengalaman</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Handmade</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="products" class="section-padding bg-light">
+      <div class="container">
+        <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h2 class="section-title">Koleksi Pilihan</h2>
+          <p class="section-subtitle">Jelajahi produk furniture premium buatan tangan kami dengan material kayu pilihan.</p>
+        </div>
+        
+        <!-- Search & Filter Controls -->
+        <div class="products-filter-bar" data-aos="fade-up" data-aos-duration="1000">
+          <div class="search-wrapper">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            <input type="text" id="productSearch" class="search-input" placeholder="Cari nama produk, material...">
+          </div>
+          
+          <div class="category-pills" id="categoryFilters">
+            <button class="category-pill active" data-category="all">Semua</button>
+          </div>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid" data-aos="fade-up" data-aos-duration="1000">
+          <div class="no-data-message" id="productsLoader">
+            <div class="loader-bar" style="width:60px;"></div>
+            <p style="margin-top:12px;">Memuat data produk...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-padding">
+      <div class="container">
+        <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h2 class="section-title">Portofolio Interior</h2>
+          <p class="section-subtitle">Dokumentasi hasil pengerjaan project custom design dan layout showroom kami.</p>
+        </div>
+        
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid" id="portfolioGrid" data-aos="fade-up" data-aos-duration="1200">
+          <div class="no-data-message" id="portfolioLoader">
+            <div class="loader-bar" style="width:60px;"></div>
+            <p style="margin-top:12px;">Memuat portofolio...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="section-padding reviews-section bg-light">
+      <div class="container">
+        <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h2 class="section-title">Testimoni Pelanggan</h2>
+          <p class="section-subtitle">Pendapat mereka yang telah merancang kehangatan hunian bersama Aruna Furniture.</p>
+        </div>
+        
+        <div class="reviews-container swiper" data-aos="fade-up" data-aos-duration="1200">
+          <div class="swiper-wrapper" id="reviewsWrapper">
+            <!-- Testimonials loaded dynamically -->
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        
+        <div class="reviews-actions" data-aos="fade-up" data-aos-duration="1000">
+          <button class="btn btn-dark" id="addReviewBtn" style="display:none;">Tulis Review Anda</button>
+          <p class="login-tip" id="loginToReviewTip" style="color:var(--gray-text); font-size:0.9rem;">
+            <a href="#" class="auth-trigger" style="color:var(--primary); font-weight:600; text-decoration:underline;">Login</a> untuk memberikan ulasan produk.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-padding">
+      <div class="container">
+        <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h2 class="section-title">Pertanyaan Umum</h2>
+          <p class="section-subtitle">Temukan jawaban atas beberapa pertanyaan yang paling sering ditanyakan pelanggan kami.</p>
+        </div>
+        
+        <div class="faq-container" id="faqContainer" data-aos="fade-up" data-aos-duration="1200">
+          <div class="no-data-message" id="faqLoader">
+            <div class="loader-bar" style="width:60px;"></div>
+            <p style="margin-top:12px;">Memuat FAQ...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-light">
+      <div class="container">
+        <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h2 class="section-title">Hubungi Kami</h2>
+          <p class="section-subtitle">Kunjungi showroom kami atau diskusikan kebutuhan custom furniture Anda.</p>
+        </div>
+        
+        <div class="contact-grid">
+          <div class="contact-info-panel" data-aos="fade-right" data-aos-duration="1000">
+            <div class="contact-card">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              </div>
+              <div>
+                <h3 class="contact-card-title">Showroom & Workshop</h3>
+                <p class="contact-card-text">Jl. Kayu Jati No. 45, Sentra Mebel Krapyak,<br>Jepara, Jawa Tengah, Indonesia 59412</p>
+              </div>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+              </div>
+              <div>
+                <h3 class="contact-card-title">WhatsApp</h3>
+                <p class="contact-card-text">
+                  <a href="https://wa.me/6281234567890?text=Halo%20Aruna%20Furniture,%20saya%20tertarik%20dengan%20produk%20Anda." target="_blank" style="color:var(--primary); font-weight:600;">+62 812-3456-7890</a>
+                </p>
+              </div>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </div>
+              <div>
+                <h3 class="contact-card-title">Email Resmi</h3>
+                <p class="contact-card-text">hello@arunafurniture.com</p>
+              </div>
+            </div>
+            
+            <div class="map-wrapper">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15849.778848777085!2d110.66228515000001!3d-6.591530999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1m3!1d3964.71714571936!2d110.6698947!3d-6.5901174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+          
+          <div class="contact-form-panel" data-aos="fade-left" data-aos-duration="1000">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="contactName" class="form-label">Nama Lengkap</label>
+                <input type="text" id="contactName" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Alamat Email</label>
+                <input type="email" id="contactEmail" class="form-control" placeholder="Masukkan alamat email Anda" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contactPhone" class="form-label">Nomor WhatsApp</label>
+                <input type="tel" id="contactPhone" class="form-control" placeholder="Contoh: 08123456789" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Pesan / Rincian Pesanan</label>
+                <textarea id="contactMessage" class="form-control" placeholder="Jelaskan jenis furniture custom atau pertanyaan Anda..." required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-dark btn-submit" id="contactSubmitBtn">
+                Kirim Pesan
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="#home" class="footer-logo">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10M12 6V2M9 22h6M2 22h20"/></svg>
+              ARUNA<span>.</span>
+            </a>
+            <p class="footer-tagline">Mewujudkan hunian impian dengan sentuhan furniture kayu berkualitas tinggi yang kokoh, modern, dan bernilai seni tinggi.</p>
+          </div>
+          
+          <div>
+            <h4 class="footer-heading">Menu Cepat</h4>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="footer-heading">Bantuan</h4>
+            <ul class="footer-links">
+              <li><a href="#reviews">Reviews</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="footer-heading">Ikuti Kami</h4>
+            <div class="social-links">
+              <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="https://facebook.com" target="_blank" class="social-icon" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
+              <a href="https://pinterest.com" target="_blank" class="social-icon" aria-label="Pinterest">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22a4 4 0 0 1-4-4v-1.43a3 3 0 0 1 .34-1.39L6.8 11.3a3 3 0 0 1 2.68-1.72h5.04a3 3 0 0 1 2.68 1.72l2.46 3.88a3 3 0 0 1 .34 1.39V18a4 4 0 0 1-4 4H8z"></path><circle cx="12" cy="5" r="3"></circle></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p class="copyright">&copy; 2026 Aruna Furniture. All Rights Reserved. Crafted by Local Artisans.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- ==================== END CLIENT VIEW ==================== -->
+
+
+  <!-- ========================================================
+       2. ADMIN SIDE VIEW WRAPPER (Shown only if logged in as Admin)
+       ======================================================== -->
+  <div id="adminView" class="admin-layout" style="display: none;">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <i data-lucide="layout-dashboard"></i>
+        ARUNA<span>.</span>Admin
+      </div>
+      
+      <ul class="sidebar-menu">
+        <li>
+          <a class="sidebar-link active" data-tab="dashboard">
+            <i data-lucide="home"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" data-tab="products">
+            <i data-lucide="package"></i>
+            <span>Produk</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" data-tab="categories">
+            <i data-lucide="layers"></i>
+            <span>Kategori</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" data-tab="portfolio">
+            <i data-lucide="image"></i>
+            <span>Portfolio</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" data-tab="testimonials">
+            <i data-lucide="message-square"></i>
+            <span>Testimonial</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" data-tab="faq">
+            <i data-lucide="help-circle"></i>
+            <span>FAQ</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-link" data-tab="contacts">
+            <i data-lucide="mail"></i>
+            <span>Pesan Kontak</span>
+          </a>
+        </li>
+      </ul>
+      
+      <div class="sidebar-footer">
+        <a class="sidebar-link" id="adminLogoutBtn" style="color:var(--danger);">
+          <i data-lucide="log-out"></i>
+          <span>Keluar</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      
+      <!-- Top header bar -->
+      <header class="admin-header">
+        <div>
+          <h2 id="headerTitle">Dashboard Utama</h2>
+          <div class="admin-title-desc" id="headerDesc">Selamat datang kembali di panel administrasi Aruna Furniture.</div>
+        </div>
+        <div class="admin-user-info">
+          <div class="admin-avatar" id="adminAvatarLetter">A</div>
+          <div>
+            <div style="font-weight:600; font-size:0.9rem;" id="adminUserName">Administrator</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Admin Level 1</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PANELS (Switchable) -->
+      
+      <!-- Panel 1: Dashboard Overview -->
+      <section class="dashboard-panel active" id="panel-dashboard">
+        <div class="admin-stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-details">
+              <h4>Total Produk</h4>
+              <div class="stat-card-number" id="count-products">0</div>
+            </div>
+            <div class="stat-card-icon"><i data-lucide="package"></i></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-details">
+              <h4>Kategori</h4>
+              <div class="stat-card-number" id="count-categories">0</div>
+            </div>
+            <div class="stat-card-icon"><i data-lucide="layers"></i></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-details">
+              <h4>Portfolio</h4>
+              <div class="stat-card-number" id="count-portfolio">0</div>
+            </div>
+            <div class="stat-card-icon"><i data-lucide="image"></i></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-details">
+              <h4>Testimoni</h4>
+              <div class="stat-card-number" id="count-testimonials">0</div>
+            </div>
+            <div class="stat-card-icon"><i data-lucide="message-square"></i></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-details">
+              <h4>Pesan Masuk</h4>
+              <div class="stat-card-number" id="count-contacts">0</div>
+            </div>
+            <div class="stat-card-icon"><i data-lucide="mail"></i></div>
+          </div>
+        </div>
+
+        <div style="background-color:var(--white); padding:30px; border-radius:12px; border:1px solid var(--border-color); box-shadow:var(--shadow-card);">
+          <h3 style="margin-bottom:12px; font-family:var(--font-heading);">Ringkasan Panel</h3>
+          <p style="color:var(--text-muted); margin-bottom:20px; font-size:0.95rem;">Gunakan menu navigasi di bagian kiri untuk mengelola katalog produk, menambahkan galeri interior portofolio, memantau ulasan yang dikirimkan pembeli, menjawab FAQ umum, dan meninjau pesan formulir kontak dari pelanggan.</p>
+          <div style="display:flex; gap:16px;">
+            <button class="btn btn-secondary" id="backToClientBtn">
+              <i data-lucide="external-link"></i> Lihat Website Utama
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 2: Products Management -->
+      <section class="dashboard-panel" id="panel-products">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+          <h3 style="font-family:var(--font-heading);">Katalog Produk</h3>
+          <button class="btn btn-primary" id="addProductBtn">
+            <i data-lucide="plus"></i> Tambah Produk Baru
+          </button>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Gambar</th>
+                <th>Nama Produk</th>
+                <th>Kategori</th>
+                <th>Material</th>
+                <th>Harga</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <!-- Loaded dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panel 3: Categories Management -->
+      <section class="dashboard-panel" id="panel-categories">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+          <h3 style="font-family:var(--font-heading);">Kategori Produk</h3>
+          <button class="btn btn-primary" id="addCategoryBtn">
+            <i data-lucide="plus"></i> Tambah Kategori
+          </button>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID Slug</th>
+                <th>Nama Kategori</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="categoriesTableBody">
+              <!-- Loaded dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panel 4: Portfolio Management -->
+      <section class="dashboard-panel" id="panel-portfolio">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+          <h3 style="font-family:var(--font-heading);">Galeri Portofolio</h3>
+          <button class="btn btn-primary" id="addPortfolioBtn">
+            <i data-lucide="plus"></i> Tambah Portofolio
+          </button>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Judul Proyek</th>
+                <th>Kategori Ruangan</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="portfolioTableBody">
+              <!-- Loaded dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panel 5: Testimonials Management -->
+      <section class="dashboard-panel" id="panel-testimonials">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+          <h3 style="font-family:var(--font-heading);">Testimonial & Review</h3>
+          <button class="btn btn-primary" id="addTestimonialBtn">
+            <i data-lucide="plus"></i> Tambah Testimonial
+          </button>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Avatar</th>
+                <th>Nama Pelanggan</th>
+                <th>Rating</th>
+                <th>Komentar</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="testimonialsTableBody">
+              <!-- Loaded dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panel 6: FAQ Management -->
+      <section class="dashboard-panel" id="panel-faq">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+          <h3 style="font-family:var(--font-heading);">Pertanyaan Umum (FAQ)</h3>
+          <button class="btn btn-primary" id="addFaqBtn">
+            <i data-lucide="plus"></i> Tambah FAQ
+          </button>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Urutan</th>
+                <th>Pertanyaan</th>
+                <th>Jawaban</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="faqTableBody">
+              <!-- Loaded dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panel 7: Contact Messages -->
+      <section class="dashboard-panel" id="panel-contacts">
+        <h3 style="font-family:var(--font-heading); margin-bottom:24px;">Formulir Hubungi Kami (Masuk)</h3>
+        
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Pengirim</th>
+                <th>Kontak Info</th>
+                <th>Rincian Pesan</th>
+                <th>Waktu</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="contactsTableBody">
+              <!-- Loaded dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- CRUD MODALS (Placed inside adminView to maintain context) -->
+
+    <!-- 1. Product Form Modal -->
+    <div class="admin-modal" id="productFormModal">
+      <div class="admin-modal-content">
+        <div class="admin-modal-header">
+          <h4 class="admin-modal-title" id="productModalTitle">Tambah Produk</h4>
+          <button class="admin-modal-close" onclick="closeAdminModal('productFormModal')">&times;</button>
+        </div>
+        <form id="productCrudForm">
+          <input type="hidden" id="crudProductId">
+          <input type="hidden" id="crudProductImage">
+          <div class="admin-modal-body">
+            <div class="form-group">
+              <label class="form-label" for="prodName">Nama Produk</label>
+              <input type="text" id="prodName" class="form-control" required placeholder="Contoh: Kursi Kayu Jati">
+            </div>
+            <div class="form-group" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <label class="form-label" for="prodPrice">Harga (IDR)</label>
+                <input type="number" id="prodPrice" class="form-control" required placeholder="Contoh: 1500000">
+              </div>
+              <div>
+                <label class="form-label" for="prodCategory">Kategori</label>
+                <select id="prodCategory" class="form-control" required>
+                  <!-- Loaded dynamically -->
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prodMaterial">Material</label>
+              <input type="text" id="prodMaterial" class="form-control" required placeholder="Contoh: Kayu Jati Solid">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prodImageFile">Pilih Gambar Produk (Local File)</label>
+              <input type="file" id="prodImageFile" class="form-control" accept="image/*">
+              <small style="color: var(--gray-text); display: block; margin-top: 4px;">
+                Catatan: Gambar disimpan di server lokal. Pastikan berkas fisik juga ditempatkan di <code>assets/images/products/</code> dengan nama yang sama.
+              </small>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prodDesc">Deskripsi Produk</label>
+              <textarea id="prodDesc" class="form-control" required placeholder="Jelaskan detail spesifikasi dan keindahan produk..." style="height:100px; resize:vertical;"></textarea>
+            </div>
+          </div>
+          <div class="admin-modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeAdminModal('productFormModal')">Batal</button>
+            <button type="submit" class="btn btn-primary" id="productSaveBtn">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 2. Category Form Modal -->
+    <div class="admin-modal" id="categoryFormModal">
+      <div class="admin-modal-content">
+        <div class="admin-modal-header">
+          <h4 class="admin-modal-title" id="categoryModalTitle">Tambah Kategori</h4>
+          <button class="admin-modal-close" onclick="closeAdminModal('categoryFormModal')">&times;</button>
+        </div>
+        <form id="categoryCrudForm">
+          <input type="hidden" id="crudCategoryId">
+          <div class="admin-modal-body">
+            <div class="form-group">
+              <label class="form-label" for="catName">Nama Kategori</label>
+              <input type="text" id="catName" class="form-control" required placeholder="Contoh: Kursi">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="catSlug">Slug (ID Kategori)</label>
+              <input type="text" id="catSlug" class="form-control" required placeholder="Contoh: chairs">
+            </div>
+          </div>
+          <div class="admin-modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeAdminModal('categoryFormModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 3. Portfolio Form Modal -->
+    <div class="admin-modal" id="portfolioFormModal">
+      <div class="admin-modal-content">
+        <div class="admin-modal-header">
+          <h4 class="admin-modal-title" id="portfolioModalTitle">Tambah Portofolio</h4>
+          <button class="admin-modal-close" onclick="closeAdminModal('portfolioFormModal')">&times;</button>
+        </div>
+        <form id="portfolioCrudForm">
+          <input type="hidden" id="crudPortfolioId">
+          <input type="hidden" id="crudPortfolioImage">
+          <div class="admin-modal-body">
+            <div class="form-group">
+              <label class="form-label" for="portTitle">Judul Proyek</label>
+              <input type="text" id="portTitle" class="form-control" required placeholder="Contoh: Living Room Scandinavian">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="portCategory">Kategori Ruangan</label>
+              <input type="text" id="portCategory" class="form-control" required placeholder="Contoh: Living Room">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="portImageFile">Pilih Gambar Portofolio (Local File)</label>
+              <input type="file" id="portImageFile" class="form-control" accept="image/*">
+              <small style="color: var(--gray-text); display: block; margin-top: 4px;">
+                Catatan: Gambar disimpan di server lokal. Pastikan berkas fisik juga ditempatkan di <code>assets/images/portfolio/</code> dengan nama yang sama.
+              </small>
+            </div>
+          </div>
+          <div class="admin-modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeAdminModal('portfolioFormModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 4. Testimonial Form Modal -->
+    <div class="admin-modal" id="testimonialFormModal">
+      <div class="admin-modal-content">
+        <div class="admin-modal-header">
+          <h4 class="admin-modal-title" id="testimonialModalTitle">Tambah Testimonial</h4>
+          <button class="admin-modal-close" onclick="closeAdminModal('testimonialFormModal')">&times;</button>
+        </div>
+        <form id="testimonialCrudForm">
+          <input type="hidden" id="crudTestimonialId">
+          <div class="admin-modal-body">
+            <div class="form-group">
+              <label class="form-label" for="testName">Nama Pelanggan</label>
+              <input type="text" id="testName" class="form-control" required placeholder="Contoh: Ahmad Fauzi">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="testRating">Rating Ulasan</label>
+              <select id="testRating" class="form-control" required>
+                <option value="5">Bintang 5 (Sangat Baik)</option>
+                <option value="4">Bintang 4 (Baik)</option>
+                <option value="3">Bintang 3 (Cukup)</option>
+                <option value="2">Bintang 2 (Buruk)</option>
+                <option value="1">Bintang 1 (Sangat Buruk)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="testAvatar">URL Avatar Pelanggan (Opsional)</label>
+              <input type="text" id="testAvatar" class="form-control" placeholder="https://..." value="https://via.placeholder.com/100">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="testComment">Komentar / Feedback</label>
+              <textarea id="testComment" class="form-control" required placeholder="Tulis masukan dari pembeli..." style="height:100px; resize:vertical;"></textarea>
+            </div>
+          </div>
+          <div class="admin-modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeAdminModal('testimonialFormModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 5. FAQ Form Modal -->
+    <div class="admin-modal" id="faqFormModal">
+      <div class="admin-modal-content">
+        <div class="admin-modal-header">
+          <h4 class="admin-modal-title" id="faqModalTitle">Tambah FAQ</h4>
+          <button class="admin-modal-close" onclick="closeAdminModal('faqFormModal')">&times;</button>
+        </div>
+        <form id="faqCrudForm">
+          <input type="hidden" id="crudFaqId">
+          <div class="admin-modal-body">
+            <div class="form-group">
+              <label class="form-label" for="faqOrder">No Urut Tampil</label>
+              <input type="number" id="faqOrder" class="form-control" required placeholder="Contoh: 1" min="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="faqQuestion">Pertanyaan</label>
+              <input type="text" id="faqQuestion" class="form-control" required placeholder="Tulis pertanyaan...">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="faqAnswer">Jawaban Singkat</label>
+              <textarea id="faqAnswer" class="form-control" required placeholder="Tulis jawaban lengkap penjelasan..." style="height:120px; resize:vertical;"></textarea>
+            </div>
+          </div>
+          <div class="admin-modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeAdminModal('faqFormModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div> <!-- ==================== END ADMIN VIEW ==================== -->
+
+
+  <!-- ========================================================
+       GLOBAL INTERACTIVE MODALS
+       ======================================================== -->
+
+  <!-- Product Detail Modal -->
+  <div class="modal" id="productDetailModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="closeDetailModal" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="product-modal-grid" id="productModalContent">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Write Review Modal -->
+  <div class="modal" id="reviewModal">
+    <div class="modal-content review-modal-content">
+      <button class="modal-close-btn" id="closeReviewModal" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <h3 class="review-modal-title">Tulis Ulasan Anda</h3>
+      <form id="reviewForm">
+        <div class="form-group">
+          <label class="form-label">Rating Produk</label>
+          <div class="star-selector" id="starSelector">
+            <svg class="star-icon" data-rating="1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-icon" data-rating="2" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-icon" data-rating="3" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-icon" data-rating="4" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-icon" data-rating="5" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="reviewComment" class="form-label">Komentar / Ulasan</label>
+          <textarea id="reviewComment" class="form-control" placeholder="Berikan pendapat Anda mengenai kualitas produk Aruna..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit" id="submitReviewBtn">Kirim Ulasan</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Unified Login Portal Modal (Toggles between User/Google & Admin/Email login tabs) -->
+  <div class="modal" id="loginPortalModal">
+    <div class="modal-content login-portal-content">
+      <button class="modal-close-btn" id="closeLoginPortalModal" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      
+      <h3 class="login-portal-title">Login ke <span>ARUNA</span></h3>
+      
+      <div class="login-tab-headers">
+        <button class="login-tab-btn active" data-target="userTab">Pelanggan</button>
+        <button class="login-tab-btn" data-target="adminTab">Pengelola (Admin)</button>
+      </div>
+      
+      <!-- Tab Pane 1: User Google Sign in -->
+      <div class="login-tab-pane active" id="userTab">
+        <p style="color:var(--gray-text); text-align:center; font-size:0.9rem; margin-bottom:24px;">Login sebagai pelanggan untuk memberikan ulasan produk terbaik kami.</p>
+        <button class="btn-google-login" id="googleLoginBtn">
+          <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1, 0, 0, 1, 0, 0)"><path d="M21.35,11.1H12v2.7h5.38c-0.24,1.28 -0.96,2.37 -2.04,3.1v2.57h3.3c1.93,-1.78 3.04,-4.4 3.04,-7.48c0,-0.61 -0.06,-1.2 -0.16,-1.79Z" fill="#4285F4"/><path d="M12,20.6c2.32,0 4.27,-0.77 5.7,-2.09l-3.3,-2.57c-0.91,0.61 -2.08,0.98 -3.3,0.98c-2.54,0 -4.69,-1.72 -5.46,-4.03H2.21v2.66c1.51,3.01 4.63,5.05 8.29,5.05Z" fill="#34A853"/><path d="M6.54,12.98c-0.2,-0.61 -0.31,-1.26 -0.31,-1.93s0.11,-1.32 0.31,-1.93V6.46H2.21c-0.81,1.62 -1.27,3.44 -1.27,5.37s0.46,3.75 1.27,5.37l4.33,-3.22Z" fill="#FBBC05"/><path d="M12,5.2c1.26,0 2.39,0.43 3.28,1.28l2.46,-2.46c-1.48,-1.38 -3.43,-2.22 -5.74,-2.22C8.34,1.8 5.22,3.84 3.71,6.85l4.33,3.22c0.77,-2.31 2.92,-4.03 5.46,-4.03Z" fill="#EA4335"/></g></svg>
+          Masuk dengan Google
+        </button>
+      </div>
+      
+      <!-- Tab Pane 2: Admin Email/Password Sign in -->
+      <div class="login-tab-pane" id="adminTab">
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Admin</label>
+            <input type="email" id="loginEmail" class="form-control" placeholder="admin@furniture.com" required autocomplete="username">
+          </div>
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" for="loginPassword">Kata Sandi</label>
+            <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn btn-primary login-btn" id="loginSubmitBtn" style="width:100%;">Masuk Ke Dashboard</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- Swiper.js JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <!-- AOS (Animate On Scroll) JS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  
+  <!-- Global layout helpers for closing modals easily -->
+  <script>
+    function closeAdminModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  </script>
+  
+  <!-- Main Web Logic Module (Handles both Client and Admin view states) -->
+  <script type="module" src="assets/js/app.js?v=18"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if the user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to get user data from 'users' collection
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+    // Helper function to check if the user has an admin role
+    function isAdmin() {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+        getUserData().role == 'admin';
+    }
+
+    // Rules for 'users' collection
+    match /users/{userId} {
+      // Allow user to read and write their own user document upon signup/login
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+      // Admins can manage all users
+      allow read, write: if isAdmin();
+    }
+
+    // Rules for 'products' collection
+    match /products/{productId} {
+      allow read: if true; // Public read
+      allow write: if isAdmin(); // Admin write
+    }
+
+    // Rules for 'categories' collection
+    match /categories/{categoryId} {
+      allow read: if true; // Public read
+      allow write: if isAdmin(); // Admin write
+    }
+
+    // Rules for 'portfolio' collection
+    match /portfolio/{portfolioId} {
+      allow read: if true; // Public read
+      allow write: if isAdmin(); // Admin write
+    }
+
+    // Rules for 'reviews' collection
+    match /reviews/{reviewId} {
+      allow read: if true; // Public read
+      allow create: if isAuthenticated(); // Authenticated users can create reviews
+      allow update, delete: if isAdmin(); // Admin manage
+    }
+
+    // Rules for 'faq' collection
+    match /faq/{faqId} {
+      allow read: if true; // Public read
+      allow write: if isAdmin(); // Admin write
+    }
+
+    // Rules for 'contacts' collection
+    match /contacts/{contactId} {
+      allow create: if true; // Public create (anyone can submit contact form)
+      allow read, update, delete: if isAdmin(); // Admin only can read and manage
+    }
+
+    // Rules for 'settings' collection (logo, banners, shop info, etc.)
+    match /settings/{settingId} {
+      allow read: if true; // Public read
+      allow write: if isAdmin(); // Admin write
+    }
+  }
+}

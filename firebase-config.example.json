@@ -1,0 +1,8 @@
+{
+  "apiKey": "ISI_API_KEY_ANDA",
+  "authDomain": "ISI_AUTH_DOMAIN_ANDA",
+  "projectId": "ISI_PROJECT_ID_ANDA",
+  "storageBucket": "ISI_STORAGE_BUCKET_ANDA",
+  "messagingSenderId": "ISI_SENDER_ID_ANDA",
+  "appId": "ISI_APP_ID_ANDA"
+}
