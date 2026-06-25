@@ -255,15 +255,17 @@ const initAuth = () => {
 
   // Resolve Google Redirect result on page load (required for Vercel/production environment)
   const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  if (!isLocalhost) {
+  if (!isLocalhost && sessionStorage.getItem('pendingGoogleRedirect') === 'true') {
     getRedirectResult(auth)
       .then((result) => {
+        sessionStorage.removeItem('pendingGoogleRedirect');
         if (result && result.user) {
           console.log("Redirect login successful for: ", result.user.email);
           alert(`Selamat Datang, ${result.user.displayName || result.user.email}!`);
         }
       })
       .catch((err) => {
+        sessionStorage.removeItem('pendingGoogleRedirect');
         console.error("Redirect Auth Error: ", err);
         alert("Gagal masuk dengan Google: " + err.message);
       });
@@ -314,6 +316,7 @@ const initAuth = () => {
           closeModal();
         } else {
           // Use redirect on production HTTPS (Vercel) to bypass Chrome's third-party cookie popup block
+          sessionStorage.setItem('pendingGoogleRedirect', 'true');
           await signInWithRedirect(auth, googleProvider);
         }
       } catch (err) {

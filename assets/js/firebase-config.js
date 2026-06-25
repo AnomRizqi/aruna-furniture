@@ -31,6 +31,12 @@ import {
 const response = await fetch('/firebase-config.json');
 const firebaseConfig = await response.json();
 
+// Use current host as authDomain in production (Vercel) to bypass Chrome/Safari third-party cookie blocks
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+if (!isLocalhost) {
+  firebaseConfig.authDomain = window.location.host;
+}
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);

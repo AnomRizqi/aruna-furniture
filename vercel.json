@@ -1,4 +1,10 @@
 {
   "cleanUrls": true,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/__/auth/:path*",
+      "destination": "https://furnitur-f2bc0.firebaseapp.com/__/auth/:path*"
+    }
+  ]
 }
