@@ -1648,4 +1648,8 @@ const initApp = async () => {
   lucide.createIcons();
 };
 
-window.addEventListener('DOMContentLoaded', initApp);
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
