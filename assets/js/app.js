@@ -253,6 +253,22 @@ const initAuth = () => {
   const googleLoginBtn = document.getElementById('googleLoginBtn');
   const adminLoginForm = document.getElementById('adminLoginForm');
 
+  // Resolve Google Redirect result on page load (required for Vercel/production environment)
+  const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  if (!isLocalhost) {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result && result.user) {
+          console.log("Redirect login successful for: ", result.user.email);
+          alert(`Selamat Datang, ${result.user.displayName || result.user.email}!`);
+        }
+      })
+      .catch((err) => {
+        console.error("Redirect Auth Error: ", err);
+        alert("Gagal masuk dengan Google: " + err.message);
+      });
+  }
+
   // Open login portal modal
   if (loginBtn) {
     loginBtn.addEventListener('click', () => {
@@ -286,14 +302,20 @@ const initAuth = () => {
     });
   });
 
-  // Action 1: Google Login (User)
+  // Action 1: Google Login (User) - Hybrid Popup (localhost) & Redirect (production/Vercel)
   if (googleLoginBtn) {
     googleLoginBtn.addEventListener('click', async () => {
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
       try {
-        const result = await signInWithPopup(auth, googleProvider);
-        const user = result.user;
-        alert(`Selamat Datang, ${user.displayName || user.email}!`);
-        closeModal();
+        if (isLocalhost) {
+          const result = await signInWithPopup(auth, googleProvider);
+          const user = result.user;
+          alert(`Selamat Datang, ${user.displayName || user.email}!`);
+          closeModal();
+        } else {
+          // Use redirect on production HTTPS (Vercel) to bypass Chrome's third-party cookie popup block
+          await signInWithRedirect(auth, googleProvider);
+        }
       } catch (err) {
         console.error("Google Login Error: ", err);
         alert("Gagal masuk dengan Google. Silakan coba kembali.");
