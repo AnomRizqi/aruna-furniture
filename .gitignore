@@ -1,2 +1,4 @@
-# Firebase local config (DO NOT COMMIT)
-firebase-config.json
+# Firebase local config - NOTE: Firebase client keys are public by design.
+# Security is enforced by Firestore Rules, not by keeping this file secret.
+# .firebase cache
+.firebase/
